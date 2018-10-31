@@ -1,0 +1,13 @@
+---
+- name: Start defined list of Docker containers
+  docker_container:
+    name: "{{ item.name }}"
+    image: "{{ item.image }}"
+    state: "{{ item.state | default('started') }}"
+    env: "{{ item.env | default(omit) }}"
+    labels: "{{ item.labels | default(omit) }}"
+    published_ports: "{{ item.published_ports | default(omit) }}"
+    restart_policy: "{{ item.restart_policy | default('unless-stopped') }}"
+    volumes: "{{ item.volumes | default(omit) }}"
+  with_items: "{{ bulk_docker_containers_list }}"
+  become: true

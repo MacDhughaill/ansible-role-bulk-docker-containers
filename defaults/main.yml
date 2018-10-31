@@ -1,0 +1,5 @@
+---
+bulk_docker_containers_list:
+#  - name:
+#    image:
+#    env:
