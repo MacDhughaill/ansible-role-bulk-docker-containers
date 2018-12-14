@@ -5,6 +5,7 @@
     image: "{{ item.image }}"
     state: "{{ item.state | default('started') }}"
     env: "{{ item.env | default(omit) }}"
+    hostname: "{{ item.hostname | default(omit) }}"
     labels: "{{ item.labels | default(omit) }}"
     published_ports: "{{ item.published_ports | default(omit) }}"
     restart_policy: "{{ item.restart_policy | default('unless-stopped') }}"
