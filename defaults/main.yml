@@ -3,3 +3,5 @@ bulk_docker_containers_list:
 #  - name:
 #    image:
 #    env:
+bulk_docker_containers_network_list:
+#  - name:

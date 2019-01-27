@@ -1,4 +1,15 @@
 ---
+- name: Create defined list of Docker networks
+  docker_network:
+    name: "{{ item.name }}"
+    state: present
+    appends: true
+    driver: "{{ item.driver | default(omit) }}"
+    driver_options: "{{ item.driver_options | default(omit) }}"
+    ipam_options: "{{ item.ipam_options | default(omit) }}"
+  with_items: "{{ bulk_docker_containers_network_list }}"
+  become: true
+
 - name: Start defined list of Docker containers
   docker_container:
     name: "{{ item.name }}"
